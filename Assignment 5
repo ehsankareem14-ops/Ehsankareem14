@@ -1,0 +1,131 @@
+class BankAccount:
+    def __init__(self, account_number, balance=0):
+        self.__account_number = account_number
+        self.__balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"Deposited {amount}. New Balance: {self.__balance}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        if amount <= self.__balance and amount > 0:
+            self.__balance -= amount
+            print(f"Withdrew {amount}. Remaining Balance: {self.__balance}")
+        else:
+            print("Invalid withdrawal. Insufficient balance or negative amount.")
+
+    def get_balance(self):
+        return self.__balance
+
+
+# ✅ Testing with 3 objects
+acc1 = BankAccount("A001", 1000)
+acc2 = BankAccount("A002", 500)
+acc3 = BankAccount("A003", 0)
+
+acc1.deposit(500)
+acc1.withdraw(200)
+print("Account 1 Balance:", acc1.get_balance())
+
+acc2.withdraw(600)  # Should fail
+print("Account 2 Balance:", acc2.get_balance())
+
+acc3.deposit(100)
+acc3.withdraw(50)
+print("Account 3 Balance:", acc3.get_balance())
+🧑‍🎓 Task 2: Student Marks Validation
+Requirements:
+
+Private attributes: __name, __roll_no, __marks
+
+Methods:
+
+Setter for marks (accept only 0–100)
+
+Getters for all attributes
+
+python
+Copy code
+class Student:
+    def __init__(self, name, roll_no, marks=0):
+        self.__name = name
+        self.__roll_no = roll_no
+        self.set_marks(marks)  # Use setter to validate
+
+    def set_marks(self, marks):
+        if 0 <= marks <= 100:
+            self.__marks = marks
+        else:
+            print("Invalid marks! Must be between 0 and 100.")
+            self.__marks = 0
+
+    def get_name(self):
+        return self.__name
+
+    def get_roll_no(self):
+        return self.__roll_no
+
+    def get_marks(self):
+        return self.__marks
+
+
+# ✅ Testing with 3 objects
+s1 = Student("Ali", 101, 85)
+s2 = Student("Sara", 102, 110)  # Invalid marks
+s3 = Student("Umar", 103)
+
+print(f"Student: {s1.get_name()}, Roll: {s1.get_roll_no()}, Marks: {s1.get_marks()}")
+print(f"Student: {s2.get_name()}, Roll: {s2.get_roll_no()}, Marks: {s2.get_marks()}")
+s3.set_marks(75)
+print(f"Student: {s3.get_name()}, Roll: {s3.get_roll_no()}, Marks: {s3.get_marks()}")
+🔐 Task 3: Password Manager
+Requirements:
+
+Private attribute: __password
+
+Methods:
+
+set_password(new_password) (strong validation optional)
+
+get_password() (only if a correct master key is provided)
+
+python
+Copy code
+class PasswordManager:
+    def __init__(self, password):
+        self.__password = password
+
+    def set_password(self, new_password):
+        if len(new_password) >= 6:
+            self.__password = new_password
+            print("Password updated successfully.")
+        else:
+            print("Password must be at least 6 characters long.")
+
+    def get_password(self, key):
+        master_key = "admin123"
+        if key == master_key:
+            return self.__password
+        else:
+            print("Access denied! Incorrect key.")
+            return None
+
+
+# Testing with 3 objects
+p1 = PasswordManager("hello123")
+p2 = PasswordManager("admin2024")
+p3 = PasswordManager("pass123")
+
+p1.set_password("strongpass")
+print("Password p1:", p1.get_password("admin123"))  # Correct key
+print("Password p1:", p1.get_password("wrong"))      # Wrong key
+
+p2.set_password("short")  # Invalid length
+print("Password p2:", p2.get_password("admin123"))
+
+p3.set_password("newpassword")
+print("Password p3:", p3.get_password("admin123"))
+
