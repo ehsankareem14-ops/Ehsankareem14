@@ -21,7 +21,7 @@ class BankAccount:
         return self.__balance
 
 
-# ✅ Testing with 3 objects
+# Testing with 3 objects
 acc1 = BankAccount("A001", 1000)
 acc2 = BankAccount("A002", 500)
 acc3 = BankAccount("A003", 0)
@@ -36,7 +36,7 @@ print("Account 2 Balance:", acc2.get_balance())
 acc3.deposit(100)
 acc3.withdraw(50)
 print("Account 3 Balance:", acc3.get_balance())
-🧑‍🎓 Task 2: Student Marks Validation
+ Task 2: Student Marks Validation
 Requirements:
 
 Private attributes: __name, __roll_no, __marks
@@ -72,7 +72,7 @@ class Student:
         return self.__marks
 
 
-# ✅ Testing with 3 objects
+# Testing with 3 objects
 s1 = Student("Ali", 101, 85)
 s2 = Student("Sara", 102, 110)  # Invalid marks
 s3 = Student("Umar", 103)
@@ -81,7 +81,7 @@ print(f"Student: {s1.get_name()}, Roll: {s1.get_roll_no()}, Marks: {s1.get_marks
 print(f"Student: {s2.get_name()}, Roll: {s2.get_roll_no()}, Marks: {s2.get_marks()}")
 s3.set_marks(75)
 print(f"Student: {s3.get_name()}, Roll: {s3.get_roll_no()}, Marks: {s3.get_marks()}")
-🔐 Task 3: Password Manager
+Task 3: Password Manager
 Requirements:
 
 Private attribute: __password
